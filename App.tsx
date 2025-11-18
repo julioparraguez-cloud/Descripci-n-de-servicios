@@ -1,46 +1,23 @@
-
 import React, { useState, useEffect } from 'react';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import EmergencyButton from './components/EmergencyButton';
 import ChatBot from './components/ChatBot';
-import Inicio from './views/Inicio';
-import Tramites from './views/Tramites';
-import Programas from './views/Programas';
-import Vive from './views/Vive';
-import Participa from './views/Participa';
-import Municipio from './views/Municipio';
+
+// The main application is now a vanilla JS SPA in index.html.
+// This React app is considered legacy and its views are no longer used.
+// We are keeping the shell in case some components need to be rendered in the future.
 
 const App: React.FC = () => {
-  const [currentView, setCurrentView] = useState(window.location.hash.substring(1) || 'inicio');
-
-  useEffect(() => {
-    const handleHashChange = () => {
-      setCurrentView(window.location.hash.substring(1) || 'inicio');
-    };
-
-    window.addEventListener('hashchange', handleHashChange);
-    return () => {
-      window.removeEventListener('hashchange', handleHashChange);
-    };
-  }, []);
+  const [currentView, setCurrentView] = useState('inicio');
 
   const renderView = () => {
-    switch (currentView) {
-      case 'tramites':
-        return <Tramites />;
-      case 'programas':
-        return <Programas />;
-      case 'vive':
-        return <Vive />;
-      case 'participa':
-        return <Participa />;
-      case 'municipio':
-        return <Municipio />;
-      case 'inicio':
-      default:
-        return <Inicio />;
-    }
+    return (
+      <div className="text-center p-8 bg-yellow-100 border border-yellow-300 rounded-md">
+          <h1 className="text-2xl font-bold text-yellow-800">Legacy React App</h1>
+          <p className="text-yellow-700">This content is from the legacy React application and is not currently displayed. The main application is rendered from index.html.</p>
+      </div>
+    );
   };
 
   return (
